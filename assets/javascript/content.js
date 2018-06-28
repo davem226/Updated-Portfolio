@@ -31,7 +31,7 @@ var sections = {
                 "./assets/content/images/main/projects/rupee-game.png",
                 "./assets/content/images/main/projects/rps-game.png"],
 
-            content: [""]
+            content: ["Meet Me in the Middle", "Rupee Collector Game", "Rock, Paper, Scissors"]
         }
     },
 
@@ -46,7 +46,7 @@ var sections = {
                 "./assets/content/images/main/contact/github.png",
                 "./assets/content/images/main/contact/email.jpg"],
 
-            content: [""]
+            content: ["David W Morris", "davem226", "davem226@yahoo.com"]
         }
     },
 }

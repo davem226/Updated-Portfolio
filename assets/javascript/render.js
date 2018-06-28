@@ -7,9 +7,11 @@ for (heading in sections) {
     // Add image to new div
     newDiv.append($("<img>").attr({ "src": sections[heading].nav.imageURL, "class": "nav-img" }));
     // Add anchor tag to new div
-    newDiv.append($("<a>").attr({ "href": "#" + Object.keys(sections)[anchorCount], 
-        "class": "nav-heading", 
-        "id": "nav-" + Object.keys(sections)[anchorCount]})
+    newDiv.append($("<a>").attr({
+        "href": "#" + Object.keys(sections)[anchorCount],
+        "class": "nav-heading",
+        "id": "nav-" + Object.keys(sections)[anchorCount]
+    })
         // Add text to anchor tag
         .text(sections[heading].title));
 
@@ -25,16 +27,23 @@ for (j in sections) {
     // Create new div with class for styling and id for click events in app.js
     var newDiv = $("<div>").attr({ "class": "main-div", "id": "main-" + Object.keys(sections)[idCount] });
 
+    // New div for housing main content of about me section
+    var newContent = $("<div>");
+
+    // Insert heading
+    var mainHeading = $("<h2>").text(sections[j].title);
+    newContent.append(mainHeading);
+
     // Add content specific to About Me section
     if (sections[j].title === "About Me") {
-        var newContent = $("<div>");
         // Insert image tag
         var newImg = $("<img>").attr({ "src": sections[j].main.imageURL, "class": "main-img" });
         newContent.append(newImg);
+
         // Loop through text paragraphs
-        for (element in sections[j].main.content) {
+        for (p in sections[j].main.content) {
             // Create new p tag
-            var newParagraph = $("<p>").text(sections[j].main.content[element]);
+            var newParagraph = $("<p>").text(sections[j].main.content[p]);
             // Append this p tag to new content div
             newContent.append(newParagraph);
         }
@@ -44,7 +53,24 @@ for (j in sections) {
 
     // For other two sections
     else {
-        
+        // Loop through an with length of imageURLs
+        for (var x = 0; x < sections[j].main.imageURLs.length; x++) {
+            // Create new div to house only the image and its corresponding content
+            var subDiv = $("<div>");
+
+            // Create image tag
+            var newImg = $("<img>").attr({ "src": sections[j].main.imageURLs[x], "class": "main-img" });
+            subDiv.append(newImg);
+
+            // Create p tag with content
+            var newParagraph = $("<p>").text(sections[j].main.content[x]);
+            subDiv.append(newParagraph);
+
+            // Append to newContent
+            newContent.append(subDiv);
+        }
+
+        newDiv.append(newContent);
     }
 
 
